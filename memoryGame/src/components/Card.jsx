@@ -29,10 +29,10 @@ const Card = (props) => {
     }, [props.id]);
 
 	return (
-		<>
-			<h1>{pokemonName}</h1>
+		<div className='bg-zinc-800 w-60 h-80 border-4 border-zinc-900 p-5 flex flex-col items-center justify-center hover:scale-110 ease-in duration-150 cursor-pointer m-5 hover:bg-zinc-900'>
 			<img src={pokemonImage} alt={pokemonName} />
-		</>
+			<h1 className='text-white font-bold capitalize text-center text-2xl mt-4'>{pokemonName}</h1>
+		</div>
 	)
 }
 

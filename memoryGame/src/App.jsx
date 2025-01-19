@@ -5,14 +5,13 @@ function App() {
   const id = [1, 5, 100, 69, 32];
 
   return (
-    <>
-    <h1 className="text-3xl font-bold underline">asd</h1>
+    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-indigo-700 to-blue-950">
      {id.map((index) => {
         return(
           <Card key={index} id={index}/>
         )
       })}
-    </>
+    </div>
   )
 }
 
