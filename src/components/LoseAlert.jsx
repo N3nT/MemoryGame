@@ -1,7 +1,7 @@
 export default function LoseAlert(props) {
     if(props.lose){
         return(
-            <div className="text-white p-20 rounded-xl bg-slate-200 absolute">
+            <div className="p-20 bg-slate-400">
                 chujchujchuj
             </div>
         )
