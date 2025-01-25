@@ -9,6 +9,7 @@ import Help from "./components/Help";
 function App() {
   const [showHelp, setShowHelp] = useState(false);
   const [score, setScore] = useState(0);
+  const [prevScore, setPrevScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [clickedCards, setClickedCards] = useState([]);
   const [lose, setLose] = useState(0);
@@ -45,6 +46,7 @@ function App() {
     if (score > bestScore){
       setBestScore(score);
     }
+    setPrevScore(score);
     setScore(0);
   }
 
@@ -65,7 +67,7 @@ function App() {
         <p>Score: {score}</p>
         <p className='ml-5'>Best Score: {bestScore}</p>
       </div>
-      <LoseAlert lose={lose}/>
+      <LoseAlert lose={lose} score={prevScore}/>
       <WinAlert win={clickedCards.length == 5}/>
     </div>
   )
