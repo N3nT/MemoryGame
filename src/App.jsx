@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { CircleHelp } from 'lucide-react'
 import LoseAlert from './components/LoseAlert'
 import WinAlert from './components/WinAlert'
@@ -16,47 +16,45 @@ function App() {
 
 	const shuffleArray = (array) => {
 		for (let i = array.length - 1; i >= 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1))
-			;[array[i], array[j]] = [array[j], array[i]]
+			const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
 		}
 	}
 
 	const handleCardClick = (id) => {
-		if (lose == 0) {
-			setLose(0)
+		if (lose == 0 && clickedCards.length < 5) {
+			setLose(0);
 			setClickedCards((prev) => {
 				if (!prev.includes(id)) {
-					const u = [...prev, id]
-					console.log('Clicked Cards:', u)
-					setScore(score + 1)
-					return [...prev, id]
+					setScore(score + 1);
+					return [...prev, id];
 				}
-				loseGame()
-				return prev
+				loseGame();
+				return prev;
 			})
 		}
 	}
 
 	const handleHelpClick = () => {
-		setShowHelp(!showHelp)
+		setShowHelp(!showHelp);
 	}
 
 	const loseGame = () => {
-		setLose(1)
-		setClickedCards([])
+		setLose(1);
+		setClickedCards([]);
 		if (score > bestScore) {
-			setBestScore(score)
+			setBestScore(score);
 		}
-		setPrevScore(score)
+		setPrevScore(score);
 	}
 
 	const newGame = () => {
-		setLose(0)
+		setLose(0);
 		setClickedCards([])
-		setScore(0)
+		setScore(0);
 	}
 
-	shuffleArray(id)
+	shuffleArray(id);
 
 	return (
 		<div className='flex flex-col justify-center items-center h-screen bg-gradient-to-r from-indigo-700 to-blue-950 relative'>
@@ -83,8 +81,8 @@ function App() {
 				<p>Score: {score}</p>
 				<p className='ml-5'>Best Score: {bestScore}</p>
 			</div>
-			<LoseAlert lose={lose} score={prevScore} newGame={newGame} />
-			<WinAlert win={clickedCards.length == 5} />
+			<LoseAlert lose={lose} score={prevScore} newGame={newGame}/>
+			<WinAlert win={clickedCards.length == 5} newGame={newGame}/>
 		</div>
 	)
 }
